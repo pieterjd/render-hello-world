@@ -11,5 +11,8 @@ RUN mvn -f /home/app/pom.xml -DskipTests clean package
 #
 FROM openjdk:17
 COPY --from=build /home/app/target/hello-world-0.0.1-SNAPSHOT.jar /app/hello-world.jar
+EXPOSE 8443
+EXPOSE 443
 EXPOSE 8080
+EXPOSE 80
 ENTRYPOINT ["java","-jar","/app/hello-world.jar"]
